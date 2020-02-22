@@ -1,0 +1,39 @@
+@import 'src/helpers';
+@import 'src/base';
+
+:host{
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 720px) {
+    height: calc(100vh - var(--header-height));
+  }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  &.container {
+    position: absolute; 
+    top: 12.5px;
+    @include proto-breakpoint-m {
+      top:100px;
+    }
+    right: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  &.item {
+    width: 25px;
+    height: 25px;
+    margin: 6.25px 12.5px;
+    padding: 8.25px;
+    background: var(--ion-color-primary);
+    border-radius: 50%;
+  }
+}

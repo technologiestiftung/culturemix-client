@@ -1,0 +1,125 @@
+<ion-content>
+
+  <section class="section primary-color">
+    <div class="cell cell--padding-s">
+      <proto-filter-preview class="primary"></proto-filter-preview>
+    </div>
+  </section>
+
+  <section class="section tertiary">
+    <div class="cell">
+
+      <div class="highlights-container">
+        <div class="highlights-headline">
+          <h1>
+            Highlights
+            <ion-spinner color="medium" class="ion-margin-start"
+            *ngIf="!highlightedEvents"></ion-spinner>
+          </h1>
+        </div>
+
+        <!-- skeleton -->
+        <div *ngIf="!highlightedEvents" class="highlights is-skeleton">
+          <div class="event-preview primary highlights-item"></div>
+          <div class="event-preview primary highlights-item"></div>
+          <div class="event-preview primary highlights-item"></div>
+          <div class="event-preview primary highlights-item"></div>
+          <div class="event-preview primary highlights-item"></div>
+          <div class="event-preview primary highlights-item"></div>
+        </div>
+
+        <div class="highlights"
+          *ngIf="highlightedEvents">
+          <proto-event-preview class="event-preview primary highlights-item"
+            *ngIf="highlightedEvents[0]"
+            [event]="highlightedEvents[0]"
+            [isHighlight]="true"
+            [currentPosition]="currentPosition"
+            [routerLink]="['/events', highlightedEvents[0].id]">
+          </proto-event-preview>
+
+          <proto-event-preview class="event-preview primary highlights-item"
+            *ngIf="highlightedEvents[1]"
+            [event]="highlightedEvents[1]"
+            [isHighlight]="true"
+            [currentPosition]="currentPosition"
+            [routerLink]="['/events', highlightedEvents[1].id]">
+          </proto-event-preview>
+
+          <proto-event-preview class="event-preview primary highlights-item"
+            *ngIf="highlightedEvents[2]"
+            [event]="highlightedEvents[2]"
+            [isHighlight]="true"
+            [currentPosition]="currentPosition"
+            [routerLink]="['/events', highlightedEvents[2].id]">
+          </proto-event-preview>
+
+          <div class="highlights-item highlights-item--teaser"
+            [routerLink]="['/events']">
+            <img src="assets/img/teaser-culturemix-map.png" class="cover-img" >
+          </div>
+
+          <proto-event-preview class="event-preview primary highlights-item"
+            *ngIf="highlightedEvents[3]"
+            [event]="highlightedEvents[3]"
+            [isHighlight]="true"
+            [currentPosition]="currentPosition"
+            [routerLink]="['/events', highlightedEvents[3].id]">
+          </proto-event-preview>
+
+          <proto-event-preview class="event-preview primary highlights-item"
+            *ngIf="highlightedEvents[4]"
+            [event]="highlightedEvents[4]"
+            [isHighlight]="true"
+            [currentPosition]="currentPosition"
+            [routerLink]="['/events', highlightedEvents[4].id]">
+          </proto-event-preview>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section primary-color">
+    <div class="cell cell--padding-s">
+      <proto-filter-preview class="secondary"></proto-filter-preview>
+    </div>
+  </div>
+
+  <section class="section"
+    *ngFor="let tag of tags index as i; odd as isOdd; even as isEven"
+    [class.tertiary]="isOdd">
+
+    <div class="cell">
+      <div class="category">
+        <div class="category-headline">
+          <h2 class="category-headline-name">{{ tag.name }}</h2>
+          <a [routerLink]="'/events'" [queryParams]="{ tags: tag.id }" class="category-headline-more">
+            <span class="category-headline-more__title">{{ 'BUTTON.MORE' | translate }}</span>
+            <div class="category-headline-arrow-button">
+              <ion-icon class="category-headline-arrow-button__icon"
+                name="arrow-round-forward"></ion-icon>
+            </div>
+          </a>
+        </div>
+        <div class="category-list">
+          <proto-event-preview class="event-preview secondary category-item"
+          *ngFor="let event of eventsByTag[tag.id]"
+          [event]="event"
+          [currentPosition]="currentPosition"
+          [routerLink]="['/events', event.id]">
+          </proto-event-preview>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section secondary section--footer">
+    <div class="cell">
+      <proto-footer></proto-footer>
+    </div>
+  </section>
+
+</ion-content>
+
