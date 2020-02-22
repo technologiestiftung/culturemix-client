@@ -1,8 +1,8 @@
 {
   "name": "ionic-culturemix",
-  "version": "0.1.0",
-  "author": "prototype.berlin",
-  "homepage": "https://prototype.berlin",
+  "version": "1.0.0",
+  "author": "Technologiestiftung Berlin",
+  "homepage": "https://www.technologiestiftung-berlin.de/de/startseite/",
   "scripts": {
     "ng": "ng",
     "start": "ionic serve -b",
